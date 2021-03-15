@@ -1,16 +1,13 @@
-# flutter2html
+# Flutter 2 WEB & Dart:html
 
-A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+dart:html 를 사용하여 dart 로 html 을 제어하는 내용을 다룰 예정입니다,
+<br />
+내용은 진행하며 변경 될 수 있지만 WebRTC 및 배포 단계는 꼭 붙이겠습니다.
+<br />
+3월 마지막 보름 동안 최대한 달려서 업로드하고 Flutter 2 WEB에 대해 마무리하겠습니다.
+<br />
+- DOM 👋
+- CSS 👋
+- JS 👋
+- WebRTC & Server 👋
+- WEB Build Release & Deploy(Github Pages & AWS & Naver Cloud ... ) 👋
