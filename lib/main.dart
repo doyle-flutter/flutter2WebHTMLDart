@@ -9,15 +9,20 @@ class WebPage extends StatefulWidget {
 }
 
 class _WebPageState extends State<WebPage> {
+
   void func(){
 
-    html.Element custom = html.querySelector(".custom") ?? html.Element.div();
-    custom.style.position = "fixed";
-    custom.style.top = "100px";
-    custom.style.left = "100px";
-    custom.style.zIndex = "100";
+    /// ./lib/web/index.html 파일에 Class="custom" Tag가 없다면 div Node 생성
+    /// Dom CSS Style
+    html.Element customDom = html.querySelector(".custom") ?? html.Element.div();
+    customDom.style.position = "fixed";
+    customDom.style.top = "100px";
+    customDom.style.left = "100px";
+    customDom.style.zIndex = "100";
+    print(customDom);
+
+    /// Dom #id Selector
     html.Element dom = html.querySelector("#id") ?? html.Element.div();
-    /// ./lib/web/index.html 파일에 #id Tag가 없다면 div Node 생성
     print(dom);
     return;
   }
@@ -30,8 +35,6 @@ class _WebPageState extends State<WebPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Flutter 2 HTML & Dart"),),
-    );
+    return Scaffold(appBar: AppBar(title: Text("Flutter 2 HTML & Dart"),),);
   }
 }
