@@ -11,9 +11,10 @@ class WebPage extends StatefulWidget {
 class _WebPageState extends State<WebPage> {
 
   void func(){
-
     /// ./lib/web/index.html 파일에 Class="custom" Tag가 없다면 div Node 생성
-    /// Dom CSS Style
+    /// index.html 34~36번째 줄 참고
+    /// - Dom .class Selector
+    /// - Dom CSS Style
     html.Element customDom = html.querySelector(".custom") ?? html.Element.div();
     customDom.style.position = "fixed";
     customDom.style.top = "100px";
