@@ -6,8 +6,7 @@ dart:html 를 사용하여 dart 로 html 을 제어하는 내용을 다룰 예�
 <br />
 3월 마지막 보름 동안 최대한 달려서 업로드하고 Flutter 2 WEB에 대해 마무리하겠습니다.
 <br />
-- DOM 👋
-- CSS 👋
+- HTML & CSS 👋
 - JS 👋
 - WebRTC & Server 👋
 - WEB Build Release & Deploy(Github Pages & AWS & Naver Cloud ... ) 👋
