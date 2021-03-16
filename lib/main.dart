@@ -27,10 +27,26 @@ class _WebPageState extends State<WebPage> {
     print(dom);
     return;
   }
+  
+  Future<void> func2JS() async{
+    html.MediaStream stream = await html.window.navigator.getUserMedia(audio: true, video: true);
+    var videoTag = new html.VideoElement()
+      ..autoplay = true
+      ..srcObject = stream;
+    html.document.body!.append(videoTag); // 설마 body 태그가 없는 경우도 발생할 수 있을까요? X
+    videoTag.style
+      ..position = "fixed"
+      ..top = "300px"
+      ..left = "50%"
+      ..transform = "translate(-50%, -50%)"
+      ..width = "45%"
+      ..zIndex = "100";
+  }
 
   @override
   void initState() {
     func();
+    Future(func2JS);
     super.initState();
   }
 
