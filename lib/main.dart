@@ -1,8 +1,30 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-// ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
-void main() => runApp(MaterialApp(home: WebPage(),));
+import 'dart:js' as js;
 
+void main() => runApp(
+  MaterialApp(
+    home: WebPage(),
+    onGenerateRoute: (RouteSettings path){
+      Uri u = Uri.parse(path.name??'');
+      String? id = u.queryParameters["id"];
+
+      print('u.queryParameters["id"] : ${u.queryParameters["id"]}');
+      print('uri : $u');
+      print("path : $path");
+      print("path.name : ${path.name}");
+      print("path.arguments : ${path.arguments}");
+      print("id : id");
+
+      return MaterialPageRoute(
+        maintainState: false,
+        settings: RouteSettings(name: '/'+(id == null? '': "?id=$id")),
+        builder: (BuildContext context) => WebPage()
+      );
+    },
+  )
+);
 class WebPage extends StatefulWidget {
   @override
   _WebPageState createState() => _WebPageState();
@@ -28,8 +50,8 @@ class _WebPageState extends State<WebPage> {
     return;
   }
   
-  Future<void> func2JS() async{
-    html.MediaStream stream = await html.window.navigator.getUserMedia(audio: true, video: true);
+  Future<html.MediaStream> func2JS() async{
+    html.MediaStream stream = await html.window.navigator.getUserMedia(audio: false, video: true);
     var videoTag = new html.VideoElement()
       ..autoplay = true
       ..srcObject = stream;
@@ -41,17 +63,32 @@ class _WebPageState extends State<WebPage> {
       ..transform = "translate(-50%, -50%)"
       ..width = "45%"
       ..zIndex = "100";
+    return stream;
   }
 
   @override
   void initState() {
     func();
-    Future(func2JS);
+    // Future(func2JS)
+    //   .then((html.MediaStream st) async => await _connectionRtc(st));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text("Flutter 2 HTML & Dart"),),);
+    return Scaffold(
+      appBar: AppBar(title: Text("Flutter 2 HTML & Dart"),),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.person),
+        onPressed: _func2,
+      ),
+    );
   }
+
+  void _func2(){
+    js.context.callMethod('play');
+    print("JS Channel");
+    return;
+  }
+
 }
