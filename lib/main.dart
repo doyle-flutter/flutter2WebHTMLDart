@@ -50,7 +50,7 @@ class _WebPageState extends State<WebPage> {
     return;
   }
   
-  Future<html.MediaStream> func2JS() async{
+  Future<void> func2JS() async{
     html.MediaStream stream = await html.window.navigator.getUserMedia(audio: false, video: true);
     var videoTag = new html.VideoElement()
       ..autoplay = true
@@ -68,14 +68,13 @@ class _WebPageState extends State<WebPage> {
       ..transform = "translate(-50%, -50%)"
       ..width = "45%"
       ..zIndex = "100";
-    return stream;
+    return;
   }
 
   @override
   void initState() {
     func();
-    // Future(func2JS)
-    //   .then((html.MediaStream st) async => await _connectionRtc(st));
+    // Future(func2JS);
     super.initState();
   }
 
