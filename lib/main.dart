@@ -55,7 +55,12 @@ class _WebPageState extends State<WebPage> {
     var videoTag = new html.VideoElement()
       ..autoplay = true
       ..srcObject = stream;
-    html.document.body!.append(videoTag); // 설마 body 태그가 없는 경우도 발생할 수 있을까요? X
+
+    /// ` html.document.body!.append(videoTag); `
+    /// 작업 중 body 태그를 없애는 경우도 생길 수 있다고 생각하시면
+    /// try-catch 로 한번 더 분기하여 append 하시길 추천드립니다.
+
+    html.document.body!.append(videoTag);
     videoTag.style
       ..position = "fixed"
       ..top = "300px"
